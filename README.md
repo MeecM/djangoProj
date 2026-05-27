@@ -1,0 +1,2 @@
+# djangoProj
+Django learning project.
