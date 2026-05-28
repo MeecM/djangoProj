@@ -34,33 +34,33 @@ There are probably thousands of web frameworks. In all different programming lan
 
 There are four main components of DJango: URLs, views, models, and templates.
 
-<!-- ```mermaid
+
+```mermaid
 flowchart TD
-    WB["WEB BROWSER"]
+    BROWSER["WEB BROWSER"]
+    CLOUD["Cloud / Internet"]:::label
 
-    subgraph Internet["Cloud/Internet"]
+    subgraph DJANGO["DJANGO"]
+        DISPATCHER["URL DISPATCHER"]
+        VIEW["VIEW"]
+        MODEL["MODEL"]
+        TEMPLATE["TEMPLATE"]
     end
 
-    subgraph Django["DJANGO"]
-        UD["URL DISPATCHER"]
-        V["VIEW"]
-        T["TEMPLATE"]
-        M["MODEL"]
-    end
+    DATABASE["DATABASE"]
 
-    DB["DATABASE"]
+    BROWSER -->|"HTTP Request"| DISPATCHER
+    VIEW -->|"HTTP Response"| BROWSER
+    DISPATCHER --> VIEW
+    VIEW --> TEMPLATE
+    TEMPLATE --> VIEW
+    VIEW -.-> MODEL
+    MODEL -.-> VIEW
+    MODEL --> DATABASE
+    DATABASE --> MODEL
 
-    <!-- WB -->|"HTTP Request"| UD
-    V -->|"HTTP Response"| WB
-
-    UD --> V
-    V <-.-> T
-    V -.-> M
-    M -.-> V
-
-    M -.-> DB
-    DB -.-> M
-``` --> -->
+    classDef label fill:none,stroke:none,color:#ded9d9,font-style:italic
+```
 
 When an HTTP Request come in from a web browser, the first part that Django it (the HTTP Request) interacts with is the URL Dispatcher, that is the `urls.py` file. It searches through configured URL patterns and stops at the **first matching** view (the `views.py` file). The view assembles the requested data and styling before generating an HTTP Response back to the web browser. This is technically all you need. It is possible to just have a Django framework website with a URL Dispatcher and a View. **This is part of chapter 2 files**.
 
@@ -185,4 +185,4 @@ The empty string represents our homepage. Because there is nothing in it, quite 
 
 Start server, you should see the greeting.
 
-### Good job.
+###  Good job.
