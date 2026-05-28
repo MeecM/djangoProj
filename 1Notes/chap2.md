@@ -55,7 +55,7 @@ flowchart TD
     VIEW --> TEMPLATE
     TEMPLATE --> VIEW
     VIEW -.-> MODEL
-    MODEL -.-> VIEW
+    MODEL --> VIEW
     MODEL --> DATABASE
     DATABASE --> MODEL
 
